@@ -1,1 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>👎</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+        <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    </head>
+    <body>
+        <section class="section is-fullheight has-text-centered">
+            <div class="container">
+                <h1 class="title" style="font-size: 80px">👎</h1>
+                <h1 class="title is-3">DislikeTube</h1>
+                <h1 class="subtitle is-4">View all of your disliked videos on YouTube</h1>
+                
+                <!--
+                    Login section
+                -->
 
+                <login-with-youtube style="" id="yt-login">
+                    <a class="button is-danger" id="yt-login-btn">
+                        <i class="fab fa-youtube"></i>
+                        &nbsp;Login with YouTube
+                    </a>
+                </login-with-youtube>
+
+            </div>
+        </section>
+
+        <script>
+        
+            window.onload = init()
+
+            function init() {
+                if(!localStorage.getItem("yt-lt")) {
+                    document.getElementById("yt-login").style.display = null;
+                }
+                else {
+                    document.getElementById("yt-login").style.display = "none";
+
+                    // Login with the API
+                }
+            }  
+            
+            document.getElementById("yt-login-btn").addEventListener('click', function() {
+                window.location.replace(`https://accounts.google.com/o/oauth2/v2/auth?client_id=1087452584935-0n94qtn5aka2gg764smhs42a3tc9ro2a.apps.googleusercontent.com&response_type=code&scope=https://www.googleapis.com/auth/youtube&redirect_uri=${window.location.href}&access_type=offline`)
+            })
+
+        </script>
+
+
+    </body>
+</html>
